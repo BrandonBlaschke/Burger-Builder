@@ -86,7 +86,7 @@ class ContactData extends Component {
                             {value: 'fastest', display: 'Fastest'},
                             {value: 'cheapest', display: 'Cheapest'}]
                 },
-                value: 'Cheapest',
+                value: 'Fastest',
                 validation: {},
                 valid: true
             },
@@ -190,9 +190,9 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
-        loading: state.loading
+        ings: state.reducer.ingredients,
+        price: state.reducer.totalPrice,
+        loading: state.order.loading
     }
 };
 

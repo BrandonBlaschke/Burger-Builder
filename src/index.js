@@ -3,17 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import {Provider} from 'react-redux'; 
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import reducer from './store/reducers/reducer';
 import thunk from 'redux-thunk'; 
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom';
+import orderReducer from './store/reducers/order';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
 
-const store = createStore(reducer, composeEnhancers(
+const rootReducer = combineReducers({
+    reducer: reducer,
+    order: orderReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 )); 
 
